@@ -1,0 +1,35 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  
+  form {
+    margin-bottom: 20px;
+  }
+  
+  input[type="number"] {
+    width: 30px;
+    height: 20px;
+    margin-right: 10px;
+  }
+  
+  #calculate-button, #clear-button {
+    padding: 10px 20px;
+    background-color: #0850a2;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #calculate-button:hover , #clear-button:hover {
+    background-color: #366cab;
+  }
+  
+  #result-container {
+    margin-top: 20px;
+  }
+  
+  #result {
+    margin-bottom: 10px;
+  }
