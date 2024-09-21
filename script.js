@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.querySelectorAll("input[type='number']").forEach(function (input) {
     input.addEventListener("input", function () {
-      if (input.value < 1 || input.value > 10) {
+      if (input.value < 1 || input.value > 30 ) {
         input.value = 1;
       }
     });
@@ -79,21 +79,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // (a b) (c d)
         result = calc(
-          calc(numberRow[0], numberRow[1], operRow[0]),
-          calc(numberRow[2], numberRow[3], operRow[2]),
+          calc(numberRow[0], numberRow[1], operRow[0], true),
+          calc(numberRow[2], numberRow[3], operRow[2], true),
           operRow[1]
         );
-        if (Math.abs(result - 24) < 0.001) {
+        if (Math.abs(result - 20) < 0.001) {
           correct.push(
             `(${numberRow[0]} ${operRow[0]} ${numberRow[1]}) ${operRow[1]} (${numberRow[2]} ${operRow[2]} ${numberRow[3]})`
           );
         }
 
         // ((a b) c) d
-        result = calc(numberRow[0], numberRow[1], operRow[0]);
-        result = calc(result, numberRow[2], operRow[1]);
+        result = calc(numberRow[0], numberRow[1], operRow[0], true);
+        result = calc(result, numberRow[2], operRow[1], true);
         result = calc(result, numberRow[3], operRow[2]);
-        if (Math.abs(result - 24) < 0.001) {
+        if (Math.abs(result - 20) < 0.001) {
           correct.push(
             `(${numberRow[0]} ${operRow[0]} ${numberRow[1]}) ${operRow[1]} ${numberRow[2]} ${operRow[2]} ${numberRow[3]}`
           );
@@ -103,9 +103,9 @@ document.addEventListener("DOMContentLoaded", function () {
         result = calc(numberRow[1], numberRow[2], operRow[1]);
         result = calc(numberRow[0], result, operRow[0]);
         result = calc(result, numberRow[3], operRow[2]);
-        if (Math.abs(result - 24) < 0.001) {
+        if (Math.abs(result - 20) < 0.001) {
           correct.push(
-            `${numberRow[0]} ${operRow[0]} (${numberRow[1]} ${operRow[1]} ${numberRow[2]}) ${operRow[2]} ${numberRow[3]}`
+            `(${numberRow[0]} ${operRow[0]} (${numberRow[1]} ${operRow[1]} ${numberRow[2]})) ${operRow[2]} ${numberRow[3]}`
           );
         }
 
@@ -113,9 +113,9 @@ document.addEventListener("DOMContentLoaded", function () {
         result = calc(numberRow[1], numberRow[2], operRow[1]);
         result = calc(result, numberRow[3], operRow[2]);
         result = calc(numberRow[0], result, operRow[0]);
-        if (Math.abs(result - 24) < 0.001) {
+        if (Math.abs(result - 20) < 0.001) {
           correct.push(
-            `${numberRow[0]} ${operRow[0]} (${numberRow[1]} ${operRow[1]} ${numberRow[2]}) ${operRow[2]} ${numberRow[3]}`
+            `${numberRow[0]} ${operRow[0]} ((${numberRow[1]} ${operRow[1]} ${numberRow[2]}) ${operRow[2]} ${numberRow[3]})`
           );
         }
 
@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
         result = calc(numberRow[2], numberRow[3], operRow[2]);
         result = calc(numberRow[1], result, operRow[1]);
         result = calc(numberRow[0], result, operRow[0]);
-        if (Math.abs(result - 24) < 0.001) {
+        if (Math.abs(result - 20) < 0.001) {
           correct.push(
             `${numberRow[0]} ${operRow[0]} (${numberRow[1]} ${operRow[1]} (${numberRow[2]} ${operRow[2]} ${numberRow[3]}))`
           );
@@ -167,17 +167,23 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-function calc(a, b, oper) {
+function calc(a, b, oper, isParenthesized = false) {
+  let result;
   if (oper === "+") {
-    return a + b;
+    result = a + b;
   } else if (oper === "-") {
-    return a - b;
+    result = a - b;
   } else if (oper === "*") {
-    return a * b;
+    result = a * b;
   } else {
     if (b === 0) {
       return 999999;
     }
-    return a / b;
+    result = a / b;
   }
+
+  if (isParenthesized) {
+    return `(${result})`;
+  }
+  return result;
 }
