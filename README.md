@@ -7,6 +7,8 @@ Anggota Kelompok :
 Repository ini terdiri dari Source Code dari aplikasi 20 Solver, yang dibuat menggunakan HTML, CSS dan JavaScript.
 Untuk sistem deploynya, kami menggunakan vercel.app
 
+Selain itu, terdapat laporan dokumentasi mengenai tugas ini, yang berisi penjabaran masalah, penjelasan implementasi dan pengujian.
+
 Berikut ini link menuju aplikasi 20 Solver, beserta video demonya :
 1. Link aplikasi   : https://20-solver-michaeljo.vercel.app/
-2. Link video demo : 
+2. Link video demo : https://youtu.be/M75bn3kZTDQ
