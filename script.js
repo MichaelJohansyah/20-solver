@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document
     .getElementById("clear-button")
     .addEventListener("click", function () {
-      // Reset the input fields to 1
+      // Reset angka agar kembali menjadi 1
       document.getElementById("num1").value = 1;
       document.getElementById("num2").value = 1;
       document.getElementById("num3").value = 1;
@@ -161,7 +161,9 @@ document.addEventListener("DOMContentLoaded", function () {
       for (let i = 0; i < columns.length; i++) {
         const column = columns[i];
         const columnHTML = column.join("<br>");
-        resultContainer.innerHTML += `<div style="display: inline-block; margin-left: 20px; text-align: left;">${columnHTML}</div>`;
+        resultContainer.innerHTML += `<div style="display: inline-block;
+        margin-left: 20px; text-align: left;
+        ">${columnHTML}</div>`; 
       }
     }
   });
