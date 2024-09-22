@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.querySelectorAll("input[type='number']").forEach(function (input) {
     input.addEventListener("input", function () {
-      if (input.value < 1 || input.value > 30 ) {
+      if (input.value < 1 || input.value > 30) {
         input.value = 1;
       }
     });
@@ -167,7 +167,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-function calc(a, b, oper, isParenthesized = false) {
+function calc(a, b, oper) {
   let result;
   if (oper === "+") {
     result = a + b;
@@ -180,10 +180,6 @@ function calc(a, b, oper, isParenthesized = false) {
       return 999999;
     }
     result = a / b;
-  }
-
-  if (isParenthesized) {
-    return `(${result})`;
   }
   return result;
 }
